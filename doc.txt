@@ -1,3 +1,7 @@
 stackoverflow qui explique comment rediriger des flux d'entree et de sorti de prgm
 https://stackoverflow.com/questions/7861611/can-someone-explain-what-dup-in-c-does
 
+Cour sur l'ordonnance des processus
+https://cours.polymtl.ca/inf2610/documentation/notes/chap3.pdf
+
+
