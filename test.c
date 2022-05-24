@@ -21,7 +21,7 @@
 //     }
 //      //for (j = 0; j < 1000000; j++);
 //     //     for (k = 0; k < 100000; k++);
-    
+	
 //     return (0);
 // }
 
@@ -56,7 +56,7 @@
 //                 printf("FIRST LAYER-->  ");
 //             printf("processus courant = %d, processus pere = %d, i = %d\n", getpid(), getppid(), i);
 //         }
-        
+		
 //     }
 //     return (0);
 // }
@@ -70,7 +70,7 @@
 
 //     pid = fork();
 //     printf("processus courant = %d, processus pere = %d\n", getpid(), getppid());
-    
+	
 //     return (0);
 // }
 
@@ -93,29 +93,74 @@
 //     return (0);
 // }
 
-void fils(int i)
-{
-    printf("\n\n\tfils %d en cours de destruction...\n", i);
-    sleep(2);
-    exit(i);
-}
+// void fils(int i)
+// {
+// 	printf("\n\n\tfils %d en cours de destruction...\n", i);
+// 	sleep(2);
+// 	exit(i);
+// }
 
-int main (void)
-{
-    int status;
-    printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+/*EXEMPLE DE CREATION DE 2 FILS AVEC UTILISATION DE &status POUR LETAT DE FIN DEXECUTION DU PROCESSUS ENFANT*/
 
-    if (fork())
-    {
-        if (fork() == 0)
-            fils(2);
-    }
-    else
-        fils (1);
-    printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-    if (wait(&status) > 0)
-         printf("fin du fils %d\n", status >> 8);
-    if (wait(&status) > 0)
-        printf("fin du fils %d\n", status >> 8);
-    return (0);
+// int main (void)
+// {
+// 	int x = 0;
+// 	int status;
+// 	printf("\n\t\tIS FIRST --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+
+// 	if (fork())
+// 	{
+// 		printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 		if (fork() == 0)
+// 		{
+// 			printf("\n\t\tFILS 2 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 			fils(2);
+// 		}
+// 	}
+// 	else
+// 	{
+// 		printf("\n\t\tFILS 1 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 		fils (1);
+// 	}
+// 	if (wait(&status) > 0)
+// 	{
+// 		status >>= 8;
+// 		printf("fin du fils %d\n", status);
+// 	}
+// 	if (wait(&status) > 0)
+// 	{
+// 		status >>= 8;
+// 		printf("fin du fils %d\n", status);
+// 	}
+// 	x++;
+// 	printf("x = %d\n", x);
+// 	return (0);
+// }
+
+/*EXEMPLE DE PROCESSUS ZOMBIE CAR LE PERE N'ATTEND PAS LE FILS*/
+
+// int main(void)
+// {
+// 	pid_t pid = fork();
+
+// 	if (pid > 0)
+// 	{
+// 		sleep(30);
+// 	}
+// 	else if (pid == 0)
+// 	{
+// 		exit(1);
+// 	}
+// 	return (0);
+// }
+
+int main(int ac, char **av)
+{
+	t_pid pid = fork();
+
+	if (pid == 0)
+	{
+		execv("ls", av + 1)
+	}
+	return 0;
 }
