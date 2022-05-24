@@ -4,6 +4,8 @@
 #include <unistd.h> //pour fork
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 
 // int main(void)
 // {
@@ -156,11 +158,20 @@
 
 int main(int ac, char **av)
 {
-	t_pid pid = fork();
-
+	pid_t pid = fork();
+	int	status = 0;
+	(void)ac;
+	printf("programme originel :\n\tpid = %d, pid pere = %d\n\n", getpid(), getppid());
 	if (pid == 0)
 	{
-		execv("ls", av + 1)
+		if (execv("./test2", av) < 0)
+			printf("ERREUR : %s\n", strerror(errno));
+		exit(1);
+	}
+	else
+	{
+		wait(&status);
+		printf("LE PERE ATTEND SON FILS: status apres le wait %d\n", status >> 8);
 	}
 	return 0;
 }
