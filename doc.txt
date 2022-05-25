@@ -1,9 +1,11 @@
 stackoverflow qui explique comment rediriger des flux d'entree et de sorti de prgm
 https://stackoverflow.com/questions/7861611/can-someone-explain-what-dup-in-c-does
 
-cours sur l'ordonnance des processus
+cours sur l'ordonnance des processus, utilisation de fork et tout pipex grosso modo
 https://cours.polymtl.ca/inf2610/documentation/notes/chap3.pdf
 
 manipulation des champs de bits (zest de savoir)
 https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/manipulation-des-bits/#1-les-operateurs-de-manipulation-des-bits
 
+Rediriger l'entree et la sortie standard vers mon pipe: 
+https://stackoverflow.com/questions/10700982/redirecting-stdout-to-pipe-in-c

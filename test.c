@@ -156,6 +156,29 @@
 // 	return (0);
 // }
 
+// int main(void)
+// {
+// 	pid_t pid;
+
+// 	pid = fork();
+
+// 	if (pid)
+// 	{
+// 		printf("ICI le processus pere: PID = %d, PID parent = %d\n", getpid(), getppid());
+// 		sleep(3);
+// 	}
+// 	else
+// 	{
+// 		printf("ICI le processus fils: PID = %d, PID parent = %d\n", getpid(), getppid());
+// 		sleep(15);
+// 		printf("ICI le processus fils, ADOPTE: PID = %d, PID parent = %d\n", getpid(), getppid());
+// 		exit(1);
+
+// 	}
+// 	return 0;
+// }
+
+
 int main(int ac, char **av)
 {
 	pid_t pid = fork();
