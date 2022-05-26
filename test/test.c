@@ -95,49 +95,49 @@
 //     return (0);
 // }
 
-// void fils(int i)
-// {
-// 	printf("\n\n\tfils %d en cours de destruction...\n", i);
-// 	sleep(2);
-// 	exit(i);
-// }
+void fils(int i)
+{
+	printf("\n\n\tfils %d en cours de destruction...\n", i);
+	sleep(2);
+	exit(i);
+}
 
 /*EXEMPLE DE CREATION DE 2 FILS AVEC UTILISATION DE &status POUR LETAT DE FIN DEXECUTION DU PROCESSUS ENFANT*/
 
-// int main (void)
-// {
-// 	int x = 0;
-// 	int status;
-// 	printf("\n\t\tIS FIRST --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+int main (void)
+{
+	int x = 0;
+	int status;
+	printf("\n\t\tIS FIRST --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
 
-// 	if (fork())
-// 	{
-// 		printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-// 		if (fork() == 0)
-// 		{
-// 			printf("\n\t\tFILS 2 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-// 			fils(2);
-// 		}
-// 	}
-// 	else
-// 	{
-// 		printf("\n\t\tFILS 1 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-// 		fils (1);
-// 	}
-// 	if (wait(&status) > 0)
-// 	{
-// 		status >>= 8;
-// 		printf("fin du fils %d\n", status);
-// 	}
-// 	if (wait(&status) > 0)
-// 	{
-// 		status >>= 8;
-// 		printf("fin du fils %d\n", status);
-// 	}
-// 	x++;
-// 	printf("x = %d\n", x);
-// 	return (0);
-// }
+	if (fork())
+	{
+		printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+		if (fork() == 0)
+		{
+			printf("\n\t\tFILS 2 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+			fils(2);
+		}
+	}
+	else
+	{
+		printf("\n\t\tFILS 1 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+		fils (1);
+	}
+	if (wait(&status) > 0)
+	{
+		status >>= 8;
+		printf("fin du fils %d\n", status);
+	}
+	if (wait(&status) > 0)
+	{
+		status >>= 8;
+		printf("fin du fils %d\n", status);
+	}
+	x++;
+	printf("x = %d\n", x);
+	return (0);
+}
 
 /*EXEMPLE DE PROCESSUS ZOMBIE CAR LE PERE N'ATTEND PAS LE FILS*/
 
