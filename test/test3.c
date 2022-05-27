@@ -10,7 +10,7 @@
 #define W 1
 #define R 0
 
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
 	pid_t pid;
 	char *args[] = {"/bin/ls", "-l", NULL};
@@ -40,7 +40,7 @@ int main(void)
 		printf("--> FILS 1, PID = %d, PID parent = %d\n\n", getpid(), getppid());
 		close(pipe_fd[R]); // ici je ferme le canal de lecture car la commande cat ne va qu'ecrire dans le tube
 		dup2(pipe_fd[W], 1); // ici je duplique mon pipe_fd d'ecriture sur 1, ainsi, mon pipe_fd devient la sortie d'ecriture std
-		if (execve(*args, args, NULL) < 0)
+		if (execve(*args, args, envp) < 0)
 		 	printf("FILS 1: EXECVE: Erreur commutation de processus: %s\n", strerror(errno));
 	}
 	//close(pipe_fd[W]); // fermture du canal d'ecriture car je n'ai besion que de la lecture

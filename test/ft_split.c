@@ -1,3 +1,6 @@
+
+#include "pipex.h"
+
 static int	ft_o(char c1, char c2)
 {
 	if (c1 == c2)
