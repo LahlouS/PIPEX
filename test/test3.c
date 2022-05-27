@@ -13,7 +13,7 @@
 int main(void)
 {
 	pid_t pid;
-	char *args[] = {"/bin/cat", "infile.txt", NULL};
+	char *args[] = {"/bin/ls", "-l", NULL};
 	int pipe_fd[2];
 	//int file_fd[2];
 	char buf[BUFFER_SIZE];
@@ -34,7 +34,6 @@ int main(void)
 			printf("WAIT: erreur wait, exit prgm");
 			exit(1);
 		}
-
 	}
 	else
 	{
@@ -44,11 +43,12 @@ int main(void)
 		if (execve(*args, args, NULL) < 0)
 		 	printf("FILS 1: EXECVE: Erreur commutation de processus: %s\n", strerror(errno));
 	}
-	close(pipe_fd[W]); // fermture du canal d'ecriture car je n'ai besion que de la lecture
+	//close(pipe_fd[W]); // fermture du canal d'ecriture car je n'ai besion que de la lecture
 	int read_ret = read(pipe_fd[R], buf, BUFFER_SIZE);
 	printf("read_ret = %d", read_ret);
 	buf[read_ret] = 0;
 	printf("\n\tPERE PID = %d et parent PID = %d\n\tRETOUR DE LA COMMANDE CAT: \n<< %s >>\n\t  normalement mon fils a fini son travaille alors je peux m'eteindre\n\n", getpid(), getppid(), buf);
+//	pipe(pipe_fd);
 	
 	return (0);
 }
