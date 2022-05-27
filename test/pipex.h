@@ -18,13 +18,14 @@
 
 typedef struct s_child
 {
-    char **args;
-    int fd[2];
+	char **args;
+	int fd[2];
 }   s_child;
 
 char	**ft_split(char const *s, char c);
 char    *ft_get_path_line(char **environ);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void    ft_set_up_child(s_child *child_info, char **paths, char *cmd);
+void    ft_setup_child_arg(s_child *child_info, char **paths, char *cmd);
+void	ft_cat_cmd_to_path(char *buf, char *path, char *cmd, char cmd_sep);
 
 #endif

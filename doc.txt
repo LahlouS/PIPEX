@@ -9,3 +9,6 @@ https://zestedesavoir.com/tutoriels/755/le-langage-c-1/notions-avancees/manipula
 
 Rediriger l'entree et la sortie standard vers mon pipe: 
 https://stackoverflow.com/questions/10700982/redirecting-stdout-to-pipe-in-c
+
+Explication de la communication dans le tube
+https://www.emi.ac.ma/ntounsi/COURS/C/Pipe/pipe.html

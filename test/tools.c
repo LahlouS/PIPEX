@@ -26,3 +26,28 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+void	ft_cat_cmd_to_path(char *buf, char *path, char *cmd, char cmd_sep)
+{
+	int	i;
+
+	i = 0;
+	while (*path && path)
+	{
+		buf[i] = *path;
+		i++;
+		path++;
+	}
+	if (path)
+	{
+		buf[i] = '/';
+		i++;
+	}
+	while (*cmd != cmd_sep)
+	{
+		buf[i] = *cmd;
+		i++;
+		cmd++;
+	}
+	buf[i] = '\0';
+}
