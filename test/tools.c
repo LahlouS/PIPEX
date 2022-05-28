@@ -32,22 +32,62 @@ void	ft_cat_cmd_to_path(char *buf, char *path, char *cmd, char cmd_sep)
 	int	i;
 
 	i = 0;
-	while (*path && path)
+	while (path && *path)
 	{
 		buf[i] = *path;
 		i++;
 		path++;
 	}
-	if (path)
+	if (path != NULL)
 	{
 		buf[i] = '/';
 		i++;
 	}
-	while (*cmd != cmd_sep)
+	while (*cmd != cmd_sep && *cmd)
 	{
 		buf[i] = *cmd;
 		i++;
 		cmd++;
 	}
 	buf[i] = '\0';
+}
+
+char    *ft_get_path_line(char **environ)
+{
+	int	i;
+
+	i = 0;
+	while (*(environ + i))
+	{
+		if ((ft_strncmp("PATH=", *(environ + i), 5)) == 0)
+			return (*(environ + i));
+		i++;
+	}
+	return (NULL);
+}
+
+int    ft_setup_child_arg(s_child *child_info, char **paths, char *cmd)
+{
+	char buf[BUFFER_SIZE];
+	int	i;
+	int	access_ret;
+
+	i = 0;
+	while (1)
+	{
+		ft_cat_cmd_to_path(buf, *(paths + i), cmd, ' ');
+		access_ret = access(buf, X_OK);
+		if (!(access_ret) || !*(paths + i))
+			break ;
+		i++;
+	}
+	if (!access_ret)
+	{
+		ft_cat_cmd_to_path(buf, *(paths + i), cmd, '\0');
+		child_info->args = ft_split(buf, ' ');
+		return (1);	
+	}
+	else
+		write(1, "ERROR: command not found\n", 25);
+	return (0);
 }

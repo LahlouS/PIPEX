@@ -1,0 +1,13 @@
+total 68
+-rwxr-xr-x 1 sachalahlou sachalahlou 25456 May 28 13:35 a.out
+-rw-r--r-- 1 sachalahlou sachalahlou  1209 May 27 20:00 ft_split.c
+-rw-r--r-- 1 sachalahlou sachalahlou   251 May 27 20:00 infile.txt
+-rw-r--r-- 1 sachalahlou sachalahlou     0 May 27 20:00 outfile
+-rw-r--r-- 1 sachalahlou sachalahlou     0 May 28 19:56 outfile.txt
+-rw-r--r-- 1 sachalahlou sachalahlou   708 May 28 19:47 pipex.h
+-rw-r--r-- 1 sachalahlou sachalahlou  4463 May 28 11:27 test.c
+-rw-r--r-- 1 sachalahlou sachalahlou  1650 May 27 20:00 test3.c
+-rw-r--r-- 1 sachalahlou sachalahlou   542 May 28 19:52 test4.c
+-rw-r--r-- 1 sachalahlou sachalahlou   612 May 28 11:21 testEnv.c
+-rw-r--r-- 1 sachalahlou sachalahlou  1341 May 28 13:35 tools.c
+-rw-r--r-- 1 sachalahlou sachalahlou    97 May 28 19:50 tools_2.c

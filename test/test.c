@@ -104,40 +104,40 @@ void fils(int i)
 
 /*EXEMPLE DE CREATION DE 2 FILS AVEC UTILISATION DE &status POUR LETAT DE FIN DEXECUTION DU PROCESSUS ENFANT*/
 
-int main (void)
-{
-	int x = 0;
-	int status;
-	printf("\n\t\tIS FIRST --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// int main (void)
+// {
+// 	int x = 0;
+// 	int status;
+// 	printf("\n\t\tIS FIRST --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
 
-	if (fork())
-	{
-		printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-		if (fork() == 0)
-		{
-			printf("\n\t\tFILS 2 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-			fils(2);
-		}
-	}
-	else
-	{
-		printf("\n\t\tFILS 1 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
-		fils (1);
-	}
-	if (wait(&status) > 0)
-	{
-		status >>= 8;
-		printf("fin du fils %d\n", status);
-	}
-	if (wait(&status) > 0)
-	{
-		status >>= 8;
-		printf("fin du fils %d\n", status);
-	}
-	x++;
-	printf("x = %d\n", x);
-	return (0);
-}
+// 	if (fork())
+// 	{
+// 		printf("\n\t\tprocessus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 		if (fork() == 0)
+// 		{
+// 			printf("\n\t\tFILS 2 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 			fils(2);
+// 		}
+// 	}
+// 	else
+// 	{
+// 		printf("\n\t\tFILS 1 --> processus courant = %d, processus parent = %d\n\n", getpid(), getppid());
+// 		fils (1);
+// 	}
+// 	if (wait(&status) > 0)
+// 	{
+// 		status >>= 8;
+// 		printf("fin du fils %d\n", status);
+// 	}
+// 	if (wait(&status) > 0)
+// 	{
+// 		status >>= 8;
+// 		printf("fin du fils %d\n", status);
+// 	}
+// 	x++;
+// 	printf("x = %d\n", x);
+// 	return (0);
+// }
 
 /*EXEMPLE DE PROCESSUS ZOMBIE CAR LE PERE N'ATTEND PAS LE FILS*/
 
@@ -179,22 +179,29 @@ int main (void)
 // }
 
 
-int main(int ac, char **av)
+// int main(int ac, char **av)
+// {
+// 	pid_t pid = fork();
+// 	int	status = 0;
+// 	(void)ac;
+// 	printf("programme originel :\n\tpid = %d, pid pere = %d\n\n", getpid(), getppid());
+// 	if (pid == 0)
+// 	{
+// 		if (execv("./test2", av) < 0)
+// 			printf("ERREUR : %s\n", strerror(errno));
+// 		exit(1);
+// 	}
+// 	else
+// 	{
+// 		wait(&status);
+// 		printf("LE PERE ATTEND SON FILS: status apres le wait %d\n", status >> 8);
+// 	}
+// 	return 0;
+// }
+
+char	**ft_split(char const *s, char c);
+int main(void)
 {
-	pid_t pid = fork();
-	int	status = 0;
-	(void)ac;
-	printf("programme originel :\n\tpid = %d, pid pere = %d\n\n", getpid(), getppid());
-	if (pid == 0)
-	{
-		if (execv("./test2", av) < 0)
-			printf("ERREUR : %s\n", strerror(errno));
-		exit(1);
-	}
-	else
-	{
-		wait(&status);
-		printf("LE PERE ATTEND SON FILS: status apres le wait %d\n", status >> 8);
-	}
+	char 
 	return 0;
 }
