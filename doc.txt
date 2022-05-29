@@ -12,3 +12,6 @@ https://stackoverflow.com/questions/10700982/redirecting-stdout-to-pipe-in-c
 
 Explication de la communication dans le tube
 https://www.emi.ac.ma/ntounsi/COURS/C/Pipe/pipe.html
+
+Un peu de theorie sur les processus sous linux en C (livre ENI)
+https://www.editions-eni.fr/open/mediabook.aspx?idR=86c0da93d374e33af9a48a1b838d6b18

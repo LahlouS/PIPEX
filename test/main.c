@@ -16,12 +16,7 @@ int main(int argc, char **argv, char **envp)
 		while (++i < (argc - 1))
 		{
 			if (ft_setup_child(&child_info, paths, *(argv + i), fds))
-			{
-				printf("--> *(child_info.fd) = %d\n", *(child_info.fd));
-				printf("fds[0] = %d\n", fds[0]);
-				printf("fds[2] = %d\n", fds[2]);				
-				printf("fds[4] = %d\n", fds[4]);
-			}
+				ft_give_birth(&child_info);
 		}
 	}
 	else
