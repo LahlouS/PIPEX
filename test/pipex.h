@@ -24,7 +24,7 @@ typedef struct s_child
 
 char	**ft_split(char const *s, char c);
 char    *ft_get_path_line(char **environ);
-int		ft_setup_child_arg(s_child *child_info, char **paths, char *cmd);
+int		ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab);
 int		*ft_setup_pipes(int argc, char *infile, char *outfile);
 void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size);
 

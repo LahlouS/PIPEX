@@ -66,11 +66,12 @@ char    *ft_get_path_line(char **environ)
 	return (NULL);
 }
 
-int    ft_setup_child_arg(s_child *child_info, char **paths, char *cmd)
+int    ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab)
 {
 	char buf[BUFFER_SIZE];
 	int	i;
 	int	access_ret;
+	static int	index = 0;
 
 	i = 0;
 	while (1)
@@ -85,9 +86,13 @@ int    ft_setup_child_arg(s_child *child_info, char **paths, char *cmd)
 	{
 		ft_cat_cmd_to_path(buf, *(paths + i), cmd, '\0');
 		child_info->args = ft_split(buf, ' ');
+		printf("in ft_setup --> fd_tab[index] = %d\n", fd_tab[index]);				
+		child_info->fd = &fd_tab[index];
+		index += 2;
 		return (1);	
 	}
 	else
 		write(1, "ERROR: command not found\n", 25);
+	index += 2;
 	return (0);
 }
