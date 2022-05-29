@@ -11,7 +11,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		paths = ft_split((ft_get_path_line(envp)) + 5, ':');
 		fds = ft_setup_pipes(argc, *(argv + 1), *(argv + (argc - 1)));
-		write(fds[5], "SACHASACHASACHASACHASACHA\n", 26);
+		//write(fds[5], "SACHASACHASACHASACHASACHA\n", 26); // pour tester que le dernire pipe pointe bien sur le outfile
 		i = 1;
 		while (++i < (argc - 1))
 		{
