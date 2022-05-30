@@ -11,7 +11,6 @@ int main(int argc, char **argv, char **envp)
 	{
 		paths = ft_split((ft_get_path_line(envp)) + 5, ':'); //tableau avec tous les chemins possibles
 		fds = ft_setup_pipes(argc, *(argv + 1), *(argv + (argc - 1))); // pipes en fonction du nombres d'arguments + dup infile et outfile
-		//write(fds[5], "SACHASACHASACHASACHASACHA\n", 26); // pour tester que le dernire pipe pointe bien sur le outfile
 		i = 1;
 		while (++i < (argc - 1))
 		{
@@ -20,6 +19,10 @@ int main(int argc, char **argv, char **envp)
 		}
 		wait(NULL);
 		wait(NULL);
+		//free(fds); tu dois encore free fds, paths (pour ca transforme ta fonction ft_clean_child afin serve 
+		//pour tout les tableaux de chaine), et faire la fonction qui close tout tes fd
+		//tu dois aussi fair ta fonction qui boucle les waits par rapport au nombre de childs
+		//puis tu dois bien tout securiser!!!
 	}
 	else
 		write(1 ,"ERROR: Invalid Arguments\n", 25);
