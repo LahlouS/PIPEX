@@ -27,6 +27,9 @@ char    *ft_get_path_line(char **environ);
 int		ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab);
 int		*ft_setup_pipes(int argc, char *infile, char *outfile);
 void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size);
+void	ft_give_birth(s_child *child_info);
+void	ft_clean_child(s_child *child_info);
+
 
 
 /*tools*/

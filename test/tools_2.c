@@ -50,3 +50,16 @@ void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size)
 		close(fd2);
 	}	
 }
+
+void	ft_clean_child(s_child *child_info)
+{
+	int	i;
+
+	i = 0;
+	while(*((child_info->args) + i))
+	{
+		free(*((child_info->args) + i));
+		i++;
+	}
+	free(child_info->args);
+}

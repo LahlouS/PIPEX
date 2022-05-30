@@ -95,12 +95,12 @@
 //     return (0);
 // }
 
-void fils(int i)
-{
-	printf("\n\n\tfils %d en cours de destruction...\n", i);
-	sleep(2);
-	exit(i);
-}
+// void fils(int i)
+// {
+// 	printf("\n\n\tfils %d en cours de destruction...\n", i);
+// 	sleep(2);
+// 	exit(i);
+// }
 
 /*EXEMPLE DE CREATION DE 2 FILS AVEC UTILISATION DE &status POUR LETAT DE FIN DEXECUTION DU PROCESSUS ENFANT*/
 
@@ -199,9 +199,9 @@ void fils(int i)
 // 	return 0;
 // }
 
-char	**ft_split(char const *s, char c);
-int main(void)
-{
-	char 
-	return 0;
-}
+// char	**ft_split(char const *s, char c);
+// int main(void)
+// {
+// 	char 
+// 	return 0;
+// }
