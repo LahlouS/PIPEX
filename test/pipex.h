@@ -28,9 +28,8 @@ int		ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab);
 int		*ft_setup_pipes(int argc, char *infile, char *outfile);
 void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size);
 void	ft_give_birth(s_child *child_info);
-void	ft_clean(char **str_array, int *fds);
+void	ft_clean(char **str_array, int *fds, int argc);
 void	ft_wait_childs(int nb_child);
-
 
 /*tools*/
 size_t	ft_strlen(const char *s);

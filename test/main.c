@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-int main(int argc, char **argv, char **envp)
+int main(const int argc, char **argv, char **envp)
 {
 	int *fds;
 	char **paths;
@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **envp)
 				ft_give_birth(&child_info);
 		}
 		ft_wait_childs(i - 2);
-		ft_clean(paths, fds);
+		ft_clean(paths, fds, argc);
 		//free(fds); tu dois encore free fds, paths (pour ca transforme ta fonction ft_clean_child afin serve 
 		//pour tout les tableaux de chaine), et faire la fonction qui close tout tes fd
 		//tu dois aussi fair ta fonction qui boucle les waits par rapport au nombre de childs
@@ -54,5 +54,5 @@ void	ft_give_birth(s_child *child_info)
         }
 	}
 	else 
-		ft_clean(child_info->args, NULL);
+		ft_clean(child_info->args, NULL, 0);
 }
