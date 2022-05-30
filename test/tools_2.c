@@ -51,15 +51,27 @@ void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size)
 	}	
 }
 
-void	ft_clean_child(s_child *child_info)
+void	ft_clean(char **str_array, int *fds)
+{
+	int	i;
+	if (str_array)
+	{	i = 0;
+		while(*(str_array + i))
+		{
+			free(*(str_array + i));
+			i++;
+		}
+		free(str_array);
+	}
+	if (fds)
+		free(fds);
+}
+
+void	ft_wait_childs(int nb_child)
 {
 	int	i;
 
-	i = 0;
-	while(*((child_info->args) + i))
-	{
-		free(*((child_info->args) + i));
-		i++;
-	}
-	free(child_info->args);
+	i = -1;
+	while (++i < nb_child)
+		wait(NULL);
 }

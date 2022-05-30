@@ -86,7 +86,6 @@ int    ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab)
 	{
 		ft_cat_cmd_to_path(buf, *(paths + i), cmd, '\0');
 		child_info->args = ft_split(buf, ' ');
-		printf("in ft_setup --> index = %d\n", index);			
 		child_info->fd = &fd_tab[index];
 		index += 2;
 		return (1);	

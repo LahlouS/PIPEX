@@ -17,8 +17,8 @@ int main(int argc, char **argv, char **envp)
 			if (ft_setup_child(&child_info, paths, *(argv + i), fds)) //trouve le bon path et le set dans la struct + donne l'adresse du fd que le child aura besoin 
 				ft_give_birth(&child_info);
 		}
-		wait(NULL);
-		wait(NULL);
+		ft_wait_childs(i - 2);
+		ft_clean(paths, fds);
 		//free(fds); tu dois encore free fds, paths (pour ca transforme ta fonction ft_clean_child afin serve 
 		//pour tout les tableaux de chaine), et faire la fonction qui close tout tes fd
 		//tu dois aussi fair ta fonction qui boucle les waits par rapport au nombre de childs
@@ -54,5 +54,5 @@ void	ft_give_birth(s_child *child_info)
         }
 	}
 	else 
-		ft_clean_child(child_info);
+		ft_clean(child_info->args, NULL);
 }
