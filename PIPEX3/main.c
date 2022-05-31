@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slahlou <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 17:48:11 by slahlou           #+#    #+#             */
+/*   Updated: 2022/05/31 17:48:15 by slahlou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
-int main(const int argc, char **argv, char **envp)
+int	main(const int argc, char **argv, char **envp)
 {
-	int *fds;
-	char **paths;
-	int i;
-	s_child child_info;
+	int		*fds;
+	char	**paths;
+	int		i;
+	t_child	child_info;
 
 	if (argc >= 5)
 	{
@@ -21,15 +33,15 @@ int main(const int argc, char **argv, char **envp)
 		ft_clean(paths, fds, argc - ft_get_nb_child(*(argv + 1)));
 	}
 	else
-		write(1 ,"ERROR: Invalid Arguments\n", 25);
+		write(1, "ERROR: Invalid Arguments\n", 25);
 	return (0);
 }
 
-void	ft_give_birth(s_child *child_info)
+void	ft_give_birth(t_child *child_info)
 {
 	int	pid;
 
-    close((child_info->fd)[1]);
+	close((child_info->fd)[1]);
 	pid = fork();
 	if (pid < 0)
 	{
@@ -39,17 +51,17 @@ void	ft_give_birth(s_child *child_info)
 	else if (!pid)
 	{
 		dup2((child_info->fd)[0], 0);
-    	close((child_info->fd)[0]);
-    	close((child_info->fd)[1]);
-    	dup2((child_info->fd)[3], 1);
-    	close((child_info->fd)[3]);
-    	if (execve(*(child_info->args), child_info->args, NULL) < 0)
-    	{
-            perror("Execve function: error encountered");
-            exit(1);
-        }
+		close((child_info->fd)[0]);
+		close((child_info->fd)[1]);
+		dup2((child_info->fd)[3], 1);
+		close((child_info->fd)[3]);
+		if (execve(*(child_info->args), child_info->args, NULL) < 0)
+		{
+			perror("Execve function: error encountered");
+			exit(1);
+		}
 	}
-	else 
+	else
 		ft_clean(child_info->args, NULL, 0);
 }
 
@@ -60,8 +72,9 @@ void	ft_clean(char **str_array, int *fds, int argc)
 
 	nb_pipe = ((argc - 3) + 1) * 2;
 	if (str_array)
-	{	i = 0;
-		while(*(str_array + i))
+	{
+		i = 0;
+		while (*(str_array + i))
 		{
 			free(*(str_array + i));
 			i++;

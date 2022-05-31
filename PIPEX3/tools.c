@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slahlou <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 17:48:47 by slahlou           #+#    #+#             */
+/*   Updated: 2022/05/31 17:48:51 by slahlou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 size_t	ft_strlen(const char *s)
@@ -13,16 +25,17 @@ size_t	ft_strlen(const char *s)
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
+
 	i = 0;
 	while (i < n)
 	{
 		if (s1[i] != s2[i])
-        {
+		{
 			return (s1[i] - s2[i]);
-        }
+		}
 		if (s1[i] == '\0' && s2[i] == '\0')
 			return (0);
-        i++;
+		i++;
 	}
 	return (0);
 }
@@ -52,7 +65,7 @@ void	ft_cat_cmd_to_path(char *buf, char *path, char *cmd, char cmd_sep)
 	buf[i] = '\0';
 }
 
-char    *ft_get_path_line(char **environ)
+char	*ft_get_path_line(char **environ)
 {
 	int	i;
 
@@ -66,11 +79,11 @@ char    *ft_get_path_line(char **environ)
 	return (NULL);
 }
 
-int    ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab)
+int	ft_setup_child(t_child *child_info, char **paths, char *cmd, int *fd_tab)
 {
-	char buf[BUFFER_SIZE];
-	int	i;
-	int	access_ret;
+	char		buf[BUFFER_SIZE];
+	int			i;
+	int			access_ret;
 	static int	index = 0;
 
 	i = 0;
@@ -88,10 +101,9 @@ int    ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab)
 		child_info->args = ft_split(buf, ' ');
 		child_info->fd = &fd_tab[index];
 		index += 2;
-		return (1);	
+		return (1);
 	}
-	else
-		write(1, "ERROR: command not found\n", 25);
+	write(1, "ERROR: command not found\n", 25);
 	index += 2;
 	return (0);
 }
