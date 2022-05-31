@@ -12,9 +12,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#define WRITE 1
-#define READ 0
-#define BUFFER_SIZE 200
+#define BUFFER_SIZE 500
 
 typedef struct s_child
 {

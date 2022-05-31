@@ -205,3 +205,91 @@
 // 	char 
 // 	return 0;
 // }
+ #define BUFFER_SIZE 500
+
+ size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+        {
+			return (s1[i] - s2[i]);
+        }
+		if (s1[i] == '\0' && s2[i] == '\0')
+			return (0);
+        i++;
+	}
+	return (0);
+}
+
+// int main (void)
+// {
+//     char *here_doc = "HERE";
+//     char *buf[BUFFER_SIZE];
+//     int read_ret;
+//     int fd[2];
+//     int pid;
+
+//     pipe(fd);
+//     pid = fork();
+//     if (pid < 0)
+//     {
+//         printf("erreur fork\n");
+//         exit (1);
+//     }
+//     else if (pid)
+//     {
+//         read_ret = read(0, buf, BUFFER_SIZE);
+
+//     }
+//     return (0);
+// }
+
+int main(void)
+{
+    char buf[BUFFER_SIZE];
+    char *here_doc = "HERE";
+    int read_ret = 1;
+    int i = 0;
+    int fd[2];
+    int pid;
+
+    pipe(fd);
+    while (read_ret)
+    {
+        write(1, "pipe heredoc> ", 14);
+        read_ret = read(0, buf, BUFFER_SIZE);
+        buf[read_ret] = '\0';
+        if (!(ft_strncmp(buf, here_doc, ft_strlen(here_doc))))
+            break ;
+
+        write(fd[1], buf, ft_strlen(buf));
+    }
+    puts("\n");
+    close(fd[1]);
+    pid = fork();
+    if (!pid)
+    {
+        char buf2[500];
+        close(fd[1]);
+        int test = read(fd[0], buf2, 500); 
+        buf2[test] = '\0';
+        printf("%s", buf2);
+    }
+    else
+        wait(NULL);
+    
+    return (0);
+}
