@@ -21,7 +21,7 @@ int	main(const int argc, char **argv, char **envp)
 
 	if (argc >= 5)
 	{
-		paths = ft_split((ft_get_path_line(envp)) + 5, ':');
+		paths = ft_split((ft_get_path_line(envp) + 5), ':');
 		fds = ft_setup_pipes(argc, argv);
 		i = 1 + ft_get_nb_child(*(argv + 1));
 		while (++i < (argc - 1))
