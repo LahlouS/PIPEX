@@ -23,10 +23,8 @@ typedef struct s_child
 char	**ft_split(char const *s, char c);
 char    *ft_get_path_line(char **environ);
 int		ft_setup_child(s_child *child_info, char **paths, char *cmd, int *fd_tab);
-int		*ft_setup_pipes(int argc, char **argv);
-int		ft_get_nb_child(char *here_doc);
-void	ft_set_input_output(int *fd_tab, char *input, char *output, int size);
-void	ft_set_heredoc(int *fd_tab, char *limit, char *output, int size);
+int		*ft_setup_pipes(int argc, char *infile, char *outfile);
+void	ft_set_input_output(int *fd_tab, char *infile, char *outfile, int size);
 void	ft_give_birth(s_child *child_info);
 void	ft_clean(char **str_array, int *fds, int argc);
 void	ft_wait_childs(int nb_child);

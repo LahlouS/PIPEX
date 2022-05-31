@@ -57,7 +57,7 @@ char    *ft_get_path_line(char **environ)
 	int	i;
 
 	i = 0;
-	while (*(environ + i) && environ)
+	while (*(environ + i))
 	{
 		if ((ft_strncmp("PATH=", *(environ + i), 5)) == 0)
 			return (*(environ + i));
