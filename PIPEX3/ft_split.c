@@ -84,13 +84,18 @@ char	**ft_split(char const *s, char c)
 	int		nbwrd;
 	int		i;
 
-	nbwrd = ft_count_wrd(s, c);
+	nbwrd = 0;
+	if (s)
+		nbwrd = ft_count_wrd(s, c);
 	strs = malloc(sizeof(char *) * (nbwrd + 1));
 	if (!strs)
 		return (NULL);
-	i = -1;
-	while (++i < nbwrd)
+	i = 0;
+	while (i < nbwrd)
+	{
 		*(strs + i) = ft_find_wrd(s, c, i);
+		i++;
+	}
 	*(strs + i) = NULL;
 	return (strs);
 }

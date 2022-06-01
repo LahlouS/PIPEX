@@ -67,13 +67,15 @@ void	ft_cat_cmd_to_path(char *buf, char *path, char *cmd, char cmd_sep)
 
 char	*ft_get_path_line(char **environ)
 {
-	int	i;
+	int		i;
 
+	if (!environ)
+		return (NULL);
 	i = 0;
-	while (environ && *(environ + i))
+	while (*(environ + i))
 	{
 		if ((ft_strncmp("PATH=", *(environ + i), 5)) == 0)
-			return (*(environ + i));
+			return (*(environ + i) + 5);
 		i++;
 	}
 	return (NULL);
